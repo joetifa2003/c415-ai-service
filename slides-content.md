@@ -1,0 +1,6 @@
+- How model is made
+- Model configuration
+- Evaulation and Plots
+- How it's deployed
+  - Docker
+- Demo

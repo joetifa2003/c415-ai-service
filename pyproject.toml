@@ -8,6 +8,7 @@ dependencies = [
     "fastapi[standard]>=0.115.14",
     "ludwig>=0.10.4",
     "numpy<2.0",
+    "ptitprince>=0.2.7",
     "pydantic>=1.10.24",
     "ruff>=0.14.6",
     "starlette>=0.44.0",
