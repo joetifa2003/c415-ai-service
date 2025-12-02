@@ -1,0 +1,42 @@
+input_features:
+  - name: image_path
+    type: image
+    encoder:
+        type: resnet
+        model_variant: 50
+        pretrained: true
+        trainable: true
+    preprocessing:
+      augmentation:
+        - type: random_horizontal_flip
+        - type: random_vertical_flip
+        - type: random_rotate
+          degree: 20
+        - type: random_blur
+          kernel_size: 3
+        - type: random_brightness
+          min: 0.5
+          max: 2.0
+        - type: random_contrast
+          min: 0.5
+          max: 2.0
+
+output_features:
+  - name: label
+    type: category
+    decoder:
+      num_fc_layers: 1
+      fc_output_size: 128
+      fc_dropout: 0.4
+
+preprocessing:
+  split:
+    type: random
+    probabilities: [0.8, 0.1, 0.1] # [Train, Validation, Test]
+
+trainer:
+  epochs: 30
+  early_stop: 5
+  learning_rate: 0.0001
+  optimizer:
+    type: adam
